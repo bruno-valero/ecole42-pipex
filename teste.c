@@ -10,7 +10,7 @@ int main() {
 
 	// printf("Escrevendo\n");
 
-	int	old_fd_term = dup(1);
+	// int	old_fd_term = dup(1);
 
 	dup2(fd_in, 0);
 	dup2(fd_out, 1);
@@ -20,7 +20,7 @@ int main() {
 
 	write(1, "Batata\n", 8);
 
-	dup2(old_fd_term, 1);
+	// dup2(old_fd_term, 1);
 
 	write(1, "Batata\n", 8);
 }
