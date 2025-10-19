@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 14:09:36 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/19 15:05:30 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/19 15:13:29 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,4 @@ static void	verify_commands(t_env env)
 			}
 		}
 	}
-
 }
