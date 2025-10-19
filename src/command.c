@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 18:44:36 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/18 19:46:05 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/19 09:56:47 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ t_command	create_command(char	*command_str, char	**paths)
 	command.full_command = build_command(command_str);
 	if (!command.full_command[0])
 	{
-		ft_destroy_char_matrix(command.full_command);
+		ft_destroy_char_matrix(&command.full_command);
 		command.full_command = NULL;
 	}
 	if (command.full_command)
 		command.command_path = get_command_path(command.full_command[0], paths);
 	else
 		command.command_path = NULL;
+	return (command);
 }
 
 static char	*get_command_path(char *command, char **paths)
@@ -64,4 +65,5 @@ void	*destroy_command(t_command command)
 {
 	ft_destroy_char_matrix(&command.full_command);
 	free(command.command_path);
+	return (NULL);
 }

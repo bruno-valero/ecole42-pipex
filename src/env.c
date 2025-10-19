@@ -6,14 +6,14 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 18:16:03 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/18 19:51:38 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/19 10:01:23 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 
 static char				**get_path(char **envp);
-static t_command_array	*build_commands(char **commands_str, char **paths);
+static t_command_array	build_commands(char **commands_str, char **paths);
 
 t_env	create_env(char *infile, char *outfile, char **commands, char **envp)
 {
@@ -24,6 +24,7 @@ t_env	create_env(char *infile, char *outfile, char **commands, char **envp)
 	env.outfile = outfile;
 	env.paths = get_path(envp);
 	env.commands = build_commands(commands, env.paths);
+	return (env);
 }
 
 static char	**get_path(char **envp)
@@ -50,7 +51,7 @@ static char	**get_path(char **envp)
 	return (path_splitted);
 }
 
-static t_command_array	*build_commands(char **command_str, char **paths)
+static t_command_array	build_commands(char **command_str, char **paths)
 {
 	int				len;
 	t_command_array	commands;
@@ -63,6 +64,7 @@ static t_command_array	*build_commands(char **command_str, char **paths)
 	len = -1;
 	while (command_str[++len])
 		commands.commands[len] = create_command(command_str[len], paths);
+	return (commands);
 }
 
 void	*destroy_env(t_env env)
@@ -71,7 +73,8 @@ void	*destroy_env(t_env env)
 
 	ft_destroy_char_matrix(&env.paths);
 	command_len = -1;
-	while (++command_len < env.commands->length)
-		destroy_command(env.commands->commands[command_len]);
-	free(env.commands);
+	while (++command_len < env.commands.length)
+		destroy_command(env.commands.commands[command_len]);
+	free(env.commands.commands);
+	return (NULL);
 }
