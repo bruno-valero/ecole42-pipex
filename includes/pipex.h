@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 14:28:34 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/19 09:35:33 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/19 12:12:49 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 # include <stdlib.h>
 # include "libft.h"
 # include "../src/env.h"
+# include "../src/process.h"
 
 #endif

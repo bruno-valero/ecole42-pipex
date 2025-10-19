@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 18:44:36 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/19 09:56:47 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/19 14:40:14 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,18 @@ static char	*get_command_path(char *command, char **paths)
 	{
 		command_concat_temp = ft_strjoin(paths[env], "/");
 		command_concat = ft_strjoin(command_concat_temp, command);
-		free(command_concat_temp);
+		if (command_concat_temp)
+		{
+			free(command_concat_temp);
+			command_concat_temp = NULL;
+		}
 		if (!access(command_concat, F_OK | X_OK))
 			return (command_concat);
-		free(command_concat);
+		if (command_concat)
+		{
+			free(command_concat);
+			command_concat = NULL;
+		}
 	}
 	free(command_concat);
 	return (NULL);

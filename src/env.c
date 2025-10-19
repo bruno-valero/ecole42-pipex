@@ -6,7 +6,7 @@
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 18:16:03 by brunofer          #+#    #+#             */
-/*   Updated: 2025/10/19 10:01:23 by brunofer         ###   ########.fr       */
+/*   Updated: 2025/10/19 14:30:32 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_env	create_env(char *infile, char *outfile, char **commands, char **envp)
 {
 	t_env	env;
 
+	ft_bzero(&env, sizeof(t_env));
 	env.self_ref = &env;
 	env.infile = infile;
 	env.outfile = outfile;
@@ -60,7 +61,7 @@ static t_command_array	build_commands(char **command_str, char **paths)
 	while (command_str[len])
 		len++;
 	commands.length = len;
-	commands.commands = malloc(sizeof(t_command));
+	commands.commands = malloc(len * sizeof(t_command));
 	len = -1;
 	while (command_str[++len])
 		commands.commands[len] = create_command(command_str[len], paths);

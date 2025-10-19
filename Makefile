@@ -23,7 +23,7 @@ CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 # ============== SRC FILES =================
 
 
-SRC_FILES = src/command.c src/env.c
+SRC_FILES = src/command.c src/env.c src/process.c
 
 # ============== PROGRAM FILES =================
 TEST_PROGRAM=teste.c

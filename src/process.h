@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_destroy_char_matrix.c                           :+:      :+:    :+:   */
+/*   process.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brunofer <brunofer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/26 14:37:14 by valero            #+#    #+#             */
-/*   Updated: 2025/10/19 14:34:54 by brunofer         ###   ########.fr       */
+/*   Created: 2025/10/19 12:08:29 by brunofer          #+#    #+#             */
+/*   Updated: 2025/10/19 14:09:44 by brunofer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libstr.h"
+#ifndef PROCESS_H
+# define PROCESS_H
 
-void	*ft_destroy_char_matrix(char ***char_matrix_ref)
-{
-	int	i;
+# include "env.h"
+# include <fcntl.h>
 
-	i = -1;
-	while ((*char_matrix_ref)[++i])
-	{
-		if ((*char_matrix_ref)[i])
-		{
-			free((*char_matrix_ref)[i]);
-			(*char_matrix_ref)[i] = NULL;
-		}
-	}
-	if (*char_matrix_ref)
-	{
-		free(*char_matrix_ref);
-		*char_matrix_ref = NULL;
-	}
-	return (NULL);
-}
+void	child_process(t_env env, int fd_files[2], int fd_pipe[2], char **envp);
+void	father_process(t_env env, int fd_files[2], int fd_pipe[2], char **envp);
+
+#endif
